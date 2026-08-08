@@ -1,271 +1,265 @@
+```css
 /* =====================================================
    VAKA-1407
    THE MILLER MURDER
    STYLE SYSTEM
 ===================================================== */
 
-
 /* =====================================================
    TEMEL
 ===================================================== */
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    min-height: 100vh;
-    background:
-        radial-gradient(circle at top, #20252d 0%, #0d0f12 45%, #08090b 100%);
-    color: #e7e9ed;
-    font-family:
-        "Segoe UI",
-        Arial,
-        sans-serif;
-    letter-spacing: 0.2px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, #20252d 0%, #0d0f12 45%, #08090b 100%);
+  color: #e7e9ed;
+  font-family:
+    "Segoe UI",
+    Arial,
+    sans-serif;
+  letter-spacing: 0.2px;
 }
 
 button,
 input,
 select,
 textarea {
-    font: inherit;
+  font: inherit;
 }
 
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
-
 
 /* =====================================================
    EKRAN SİSTEMİ
 ===================================================== */
 
 .screen {
-    display: none;
-    min-height: 100vh;
-    width: 100%;
-    padding: 30px 20px 70px;
+  display: none;
+  min-height: 100vh;
+  width: 100%;
+  padding: 30px 20px 70px;
 }
 
 .screen.active {
-    display: block;
+  display: block;
 }
-
 
 /* =====================================================
    GİRİŞ EKRANI
 ===================================================== */
 
 #intro {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 #intro.active {
-    display: flex;
+  display: flex;
 }
 
 .intro-box {
-    width: min(720px, 100%);
-    padding: 55px 35px;
-    border: 1px solid #3b414b;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(30, 34, 41, 0.96),
-            rgba(12, 14, 17, 0.98)
-        );
-    box-shadow:
-        0 0 70px rgba(0, 0, 0, 0.65),
-        inset 0 0 30px rgba(255, 255, 255, 0.02);
-    position: relative;
-    overflow: hidden;
+  width: min(720px, 100%);
+  padding: 55px 35px;
+  border: 1px solid #3b414b;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(30, 34, 41, 0.96),
+      rgba(12, 14, 17, 0.98)
+    );
+  box-shadow:
+    0 0 70px rgba(0, 0, 0, 0.65),
+    inset 0 0 30px rgba(255, 255, 255, 0.02);
+  position: relative;
+  overflow: hidden;
 }
 
 .intro-box::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-        repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 3px,
-            rgba(255,255,255,0.015) 4px
-        );
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(255, 255, 255, 0.015) 4px
+    );
 }
 
 .case-number {
-    position: relative;
-    color: #858b95;
-    font-size: 12px;
-    letter-spacing: 4px;
-    margin-bottom: 25px;
+  position: relative;
+  color: #858b95;
+  font-size: 12px;
+  letter-spacing: 4px;
+  margin-bottom: 25px;
 }
 
 .intro-box h1 {
-    position: relative;
-    font-size: clamp(48px, 10vw, 90px);
-    letter-spacing: 8px;
-    font-weight: 800;
-    color: #f1f2f4;
+  position: relative;
+  font-size: clamp(48px, 10vw, 90px);
+  letter-spacing: 8px;
+  font-weight: 800;
+  color: #f1f2f4;
 }
 
 .subtitle {
-    position: relative;
-    margin-top: 5px;
-    color: #9da3ad;
-    font-size: 14px;
-    letter-spacing: 6px;
+  position: relative;
+  margin-top: 5px;
+  color: #9da3ad;
+  font-size: 14px;
+  letter-spacing: 6px;
 }
 
 .classified {
-    position: relative;
-    display: inline-block;
-    margin-top: 35px;
-    padding: 7px 14px;
-    border: 1px solid #6b3030;
-    color: #d76c6c;
-    font-size: 11px;
-    letter-spacing: 3px;
+  position: relative;
+  display: inline-block;
+  margin-top: 35px;
+  padding: 7px 14px;
+  border: 1px solid #6b3030;
+  color: #d76c6c;
+  font-size: 11px;
+  letter-spacing: 3px;
 }
 
 .intro-text {
-    position: relative;
-    margin: 35px auto;
-    max-width: 500px;
-    line-height: 1.9;
-    color: #b8bdc6;
+  position: relative;
+  margin: 35px auto;
+  max-width: 500px;
+  line-height: 1.9;
+  color: #b8bdc6;
 }
-
 
 /* =====================================================
    BAŞLIKLAR
 ===================================================== */
 
 .header {
-    width: min(900px, 100%);
-    margin: 0 auto 25px;
+  width: min(900px, 100%);
+  margin: 0 auto 25px;
 }
 
 .header small {
-    color: #777e89;
-    font-size: 11px;
-    letter-spacing: 3px;
+  color: #777e89;
+  font-size: 11px;
+  letter-spacing: 3px;
 }
 
 .header h2 {
-    margin-top: 8px;
-    font-size: clamp(28px, 5vw, 42px);
-    letter-spacing: 1px;
+  margin-top: 8px;
+  font-size: clamp(28px, 5vw, 42px);
+  letter-spacing: 1px;
 }
 
 .header p {
-    margin-top: 8px;
-    color: #9298a2;
-    line-height: 1.6;
+  margin-top: 8px;
+  color: #9298a2;
+  line-height: 1.6;
 }
-
 
 /* =====================================================
    KARTLAR
 ===================================================== */
 
 .card {
-    width: min(900px, 100%);
-    margin: 15px auto;
-    padding: 24px;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(28, 32, 38, 0.96),
-            rgba(17, 19, 23, 0.96)
-        );
-    border: 1px solid #343a44;
-    box-shadow:
-        0 12px 35px rgba(0, 0, 0, 0.22);
+  width: min(900px, 100%);
+  margin: 15px auto;
+  padding: 24px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(28, 32, 38, 0.96),
+      rgba(17, 19, 23, 0.96)
+    );
+  border: 1px solid #343a44;
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.22);
 }
 
 .card h3 {
-    margin-bottom: 10px;
-    font-size: 20px;
+  margin-bottom: 10px;
+  font-size: 20px;
 }
 
 .card p {
-    color: #b9bec7;
-    line-height: 1.75;
+  color: #b9bec7;
+  line-height: 1.75;
 }
 
 .warning-card {
-    border-left: 3px solid #9a4a4a;
+  border-left: 3px solid #9a4a4a;
 }
 
 .section-label {
-    color: #7e8691;
-    font-size: 10px;
-    letter-spacing: 3px;
-    margin-bottom: 9px;
-    text-transform: uppercase;
+  color: #7e8691;
+  font-size: 10px;
+  letter-spacing: 3px;
+  margin-bottom: 9px;
+  text-transform: uppercase;
 }
-
 
 /* =====================================================
    TIMER
 ===================================================== */
 
 .timer-card {
-    width: min(900px, 100%);
-    margin: 0 auto 20px;
-    padding: 18px 25px;
-    border: 1px solid #3c424c;
-    background: #111318;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  width: min(900px, 100%);
+  margin: 0 auto 20px;
+  padding: 18px 25px;
+  border: 1px solid #3c424c;
+  background: #111318;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .timer-label {
-    color: #777e88;
-    font-size: 11px;
-    letter-spacing: 3px;
+  color: #777e88;
+  font-size: 11px;
+  letter-spacing: 3px;
 }
 
 .timer {
-    font-family: monospace;
-    font-size: 25px;
-    font-weight: 700;
-    color: #d5d8dd;
+  font-family: monospace;
+  font-size: 25px;
+  font-weight: 700;
+  color: #d5d8dd;
 }
 
 .timer.warning {
-    color: #d58a55;
+  color: #d58a55;
 }
 
 .timer.danger {
-    color: #c95353;
-    animation: pulse 1s infinite;
+  color: #c95353;
+  animation: pulse 1s infinite;
 }
 
 @keyframes pulse {
-    50% {
-        opacity: 0.45;
-    }
+  50% {
+    opacity: 0.45;
+  }
 }
 
 .small-timer {
-    padding: 12px 20px;
+  padding: 12px 20px;
 }
-
 
 /* =====================================================
    BUTONLAR
@@ -275,271 +269,265 @@ button {
 .menu-btn,
 .choice,
 .back {
-    display: block;
-    width: min(900px, 100%);
-    margin: 14px auto;
-    padding: 15px 20px;
-    border: 1px solid #424954;
-    background: #1c2026;
-    color: #e7e9ed;
-    transition:
-        background 0.2s ease,
-        border-color 0.2s ease,
-        transform 0.2s ease;
+  display: block;
+  width: min(900px, 100%);
+  margin: 14px auto;
+  padding: 15px 20px;
+  border: 1px solid #424954;
+  background: #1c2026;
+  color: #e7e9ed;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .start-btn {
-    position: relative;
-    width: auto;
-    min-width: 260px;
-    margin: 0 auto;
-    background: #e8eaed;
-    color: #101216;
-    border-color: #e8eaed;
-    font-weight: 700;
-    letter-spacing: 1px;
+  position: relative;
+  width: auto;
+  min-width: 260px;
+  margin: 0 auto;
+  background: #e8eaed;
+  color: #101216;
+  border-color: #e8eaed;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 .start-btn:hover {
-    background: #ffffff;
-    transform: translateY(-2px);
+  background: #ffffff;
+  transform: translateY(-2px);
 }
 
 .menu-btn:hover,
 .choice:hover,
 .back:hover {
-    background: #282d35;
-    border-color: #69717d;
-    transform: translateY(-1px);
+  background: #282d35;
+  border-color: #69717d;
+  transform: translateY(-1px);
 }
 
 .back {
-    margin-top: 25px;
-    background: transparent;
-    color: #8d949f;
+  margin-top: 25px;
+  background: transparent;
+  color: #8d949f;
 }
-
 
 /* =====================================================
    DELİL
 ===================================================== */
 
 .evidence {
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
 
 .evidence-number {
-    color: #727984;
-    font-size: 10px;
-    letter-spacing: 3px;
-    margin-bottom: 10px;
+  color: #727984;
+  font-size: 10px;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
 }
 
 .evidence button {
-    margin-top: 15px;
-    padding: 9px 15px;
-    border: 1px solid #454b55;
-    background: #15181d;
-    color: #d5d8dd;
+  margin-top: 15px;
+  padding: 9px 15px;
+  border: 1px solid #454b55;
+  background: #15181d;
+  color: #d5d8dd;
 }
 
 .evidence button:hover {
-    background: #252a31;
+  background: #252a31;
 }
 
 .details {
-    display: none;
-    margin-top: 18px;
-    padding: 17px;
-    border-left: 2px solid #656d78;
-    background: #101216;
-    color: #b9bec7;
-    line-height: 1.75;
+  display: none;
+  margin-top: 18px;
+  padding: 17px;
+  border-left: 2px solid #656d78;
+  background: #101216;
+  color: #b9bec7;
+  line-height: 1.75;
 }
 
 .details.show {
-    display: block;
+  display: block;
 }
-
 
 /* =====================================================
    İLERLEME
 ===================================================== */
 
 .progress-card {
-    width: min(900px, 100%);
-    margin: 0 auto 20px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+  width: min(900px, 100%);
+  margin: 0 auto 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 }
 
 .progress-card div {
-    padding: 16px;
-    text-align: center;
-    border: 1px solid #343a44;
-    background: #14171c;
-    color: #777e89;
-    font-size: 10px;
-    letter-spacing: 2px;
+  padding: 16px;
+  text-align: center;
+  border: 1px solid #343a44;
+  background: #14171c;
+  color: #777e89;
+  font-size: 10px;
+  letter-spacing: 2px;
 }
 
 .progress-card span {
-    display: block;
-    margin-top: 7px;
-    color: #e3e5e9;
-    font-size: 22px;
-    letter-spacing: 0;
+  display: block;
+  margin-top: 7px;
+  color: #e3e5e9;
+  font-size: 22px;
+  letter-spacing: 0;
 }
-
 
 /* =====================================================
    ŞÜPHELİLER
 ===================================================== */
 
 .suspect {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .suspect-name {
-    font-size: 19px;
-    font-weight: 700;
+  font-size: 19px;
+  font-weight: 700;
 }
 
 .role {
-    color: #777f8a;
-    font-size: 13px;
-    margin-top: 4px;
+  color: #777f8a;
+  font-size: 13px;
+  margin-top: 4px;
 }
-
 
 /* =====================================================
    SORGU
 ===================================================== */
 
 .question {
-    width: 100%;
-    margin-top: 12px;
-    padding: 13px 15px;
-    text-align: left;
-    background: #15181d;
-    border: 1px solid #343a44;
-    color: #cfd3d9;
+  width: 100%;
+  margin-top: 12px;
+  padding: 13px 15px;
+  text-align: left;
+  background: #15181d;
+  border: 1px solid #343a44;
+  color: #cfd3d9;
 }
 
 .question:hover {
-    background: #20242a;
+  background: #20242a;
 }
 
 .answer {
-    display: none;
-    margin-top: 7px;
-    padding: 15px;
-    background: #0f1115;
-    border-left: 2px solid #666e79;
-    color: #adb3bc;
-    line-height: 1.7;
+  display: none;
+  margin-top: 7px;
+  padding: 15px;
+  background: #0f1115;
+  border-left: 2px solid #666e79;
+  color: #adb3bc;
+  line-height: 1.7;
 }
 
 .answer.show {
-    display: block;
+  display: block;
 }
-
 
 /* =====================================================
    ZAMAN ÇİZELGESİ
 ===================================================== */
 
 .timeline {
-    width: min(900px, 100%);
-    margin: 0 auto;
-    position: relative;
-    padding-left: 30px;
+  width: min(900px, 100%);
+  margin: 0 auto;
+  position: relative;
+  padding-left: 30px;
 }
 
 .timeline::before {
-    content: "";
-    position: absolute;
-    left: 8px;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background: #414751;
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #414751;
 }
 
 .timeline-item {
-    position: relative;
-    margin-bottom: 15px;
-    padding: 18px;
-    background: #171a20;
-    border: 1px solid #303640;
+  position: relative;
+  margin-bottom: 15px;
+  padding: 18px;
+  background: #171a20;
+  border: 1px solid #303640;
 }
 
 .timeline-item::before {
-    content: "";
-    position: absolute;
-    left: -27px;
-    top: 22px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #b8bdc5;
+  content: "";
+  position: absolute;
+  left: -27px;
+  top: 22px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #b8bdc5;
 }
 
 .timeline-time {
-    font-family: monospace;
-    color: #d4d7dc;
-    font-weight: 700;
-    margin-bottom: 8px;
+  font-family: monospace;
+  color: #d4d7dc;
+  font-weight: 700;
+  margin-bottom: 8px;
 }
 
 .timeline-content {
-    color: #aeb4bd;
-    line-height: 1.6;
+  color: #aeb4bd;
+  line-height: 1.6;
 }
-
 
 /* =====================================================
    TELEFON
 ===================================================== */
 
 .phone-lock {
-    text-align: center;
+  text-align: center;
 }
 
 .phone-icon {
-    font-size: 50px;
-    margin-bottom: 15px;
+  font-size: 50px;
+  margin-bottom: 15px;
 }
 
 .code-input {
-    display: block;
-    width: 180px;
-    margin: 20px auto;
-    padding: 14px;
-    text-align: center;
-    font-family: monospace;
-    font-size: 25px;
-    letter-spacing: 8px;
-    background: #0c0e11;
-    border: 1px solid #414751;
-    color: #f0f1f3;
-    outline: none;
+  display: block;
+  width: 180px;
+  margin: 20px auto;
+  padding: 14px;
+  text-align: center;
+  font-family: monospace;
+  font-size: 25px;
+  letter-spacing: 8px;
+  background: #0c0e11;
+  border: 1px solid #414751;
+  color: #f0f1f3;
+  outline: none;
 }
 
 .code-input:focus {
-    border-color: #737b87;
+  border-color: #737b87;
 }
 
 .hidden-content {
-    display: none;
+  display: none;
 }
 
 .hidden-content.unlocked {
-    display: block;
+  display: block;
 }
 
 #phoneResult,
@@ -547,212 +535,203 @@ button {
 #cameraResult,
 #combineResult,
 #result {
-    margin-top: 15px;
+  margin-top: 15px;
 }
-
 
 /* =====================================================
    LABORATUVAR
 ===================================================== */
 
 .locked-report {
-    border-left: 2px solid #5b5f68;
+  border-left: 2px solid #5b5f68;
 }
-
 
 /* =====================================================
    DELİL BİRLEŞTİRME
 ===================================================== */
 
 select {
-    width: 100%;
-    margin-top: 12px;
-    padding: 13px;
-    background: #101216;
-    color: #d9dce1;
-    border: 1px solid #3b414b;
-    outline: none;
+  width: 100%;
+  margin-top: 12px;
+  padding: 13px;
+  background: #101216;
+  color: #d9dce1;
+  border: 1px solid #3b414b;
+  outline: none;
 }
 
 select:focus {
-    border-color: #727a86;
+  border-color: #727a86;
 }
-
 
 /* =====================================================
    OLAY YERİ
 ===================================================== */
 
 .scene-card {
-    min-height: 150px;
+  min-height: 150px;
 }
 
 .scene-icon {
-    font-size: 35px;
-    margin-bottom: 12px;
+  font-size: 35px;
+  margin-bottom: 12px;
 }
-
 
 /* =====================================================
    NOT DEFTERİ
 ===================================================== */
 
 .clue {
-    display: block;
-    margin: 12px 0;
-    padding: 12px;
-    background: #12151a;
-    border: 1px solid #292f37;
-    color: #aeb4bd;
-    line-height: 1.5;
+  display: block;
+  margin: 12px 0;
+  padding: 12px;
+  background: #12151a;
+  border: 1px solid #292f37;
+  color: #aeb4bd;
+  line-height: 1.5;
 }
 
 .clue input {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 textarea {
-    display: block;
-    width: 100%;
-    min-height: 220px;
-    resize: vertical;
-    margin-top: 10px;
-    padding: 15px;
-    background: #0e1014;
-    border: 1px solid #3a404a;
-    color: #dfe1e5;
-    outline: none;
-    line-height: 1.6;
+  display: block;
+  width: 100%;
+  min-height: 220px;
+  resize: vertical;
+  margin-top: 10px;
+  padding: 15px;
+  background: #0e1014;
+  border: 1px solid #3a404a;
+  color: #dfe1e5;
+  outline: none;
+  line-height: 1.6;
 }
 
 textarea:focus {
-    border-color: #727a86;
+  border-color: #727a86;
 }
 
 .saved-message {
-    display: none;
-    margin-top: 10px;
-    color: #8eaf92;
+  display: none;
+  margin-top: 10px;
+  color: #8eaf92;
 }
 
 .saved-message.show {
-    display: block;
+  display: block;
 }
-
 
 /* =====================================================
    SONUÇLAR
 ===================================================== */
 
 .correct {
-    border-left: 3px solid #6e9b74;
+  border-left: 3px solid #6e9b74;
 }
 
 .correct h3 {
-    color: #91bd97;
+  color: #91bd97;
 }
 
 .wrong {
-    border-left: 3px solid #a85c5c;
+  border-left: 3px solid #a85c5c;
 }
 
 .wrong h3 {
-    color: #d47b7b;
+  color: #d47b7b;
 }
 
 .result-card {
-    padding: 25px;
-    text-align: center;
+  padding: 25px;
+  text-align: center;
 }
-
 
 /* =====================================================
    MOBİL
 ===================================================== */
 
 @media (max-width: 650px) {
+  .screen {
+    padding: 20px 12px 50px;
+  }
 
-    .screen {
-        padding: 20px 12px 50px;
-    }
+  .intro-box {
+    padding: 40px 20px;
+  }
 
-    .intro-box {
-        padding: 40px 20px;
-    }
+  .intro-box h1 {
+    letter-spacing: 4px;
+  }
 
-    .intro-box h1 {
-        letter-spacing: 4px;
-    }
+  .subtitle {
+    letter-spacing: 3px;
+  }
 
-    .subtitle {
-        letter-spacing: 3px;
-    }
+  .card {
+    padding: 18px;
+  }
 
-    .card {
-        padding: 18px;
-    }
+  .timer-card {
+    padding: 14px 17px;
+  }
 
-    .timer-card {
-        padding: 14px 17px;
-    }
+  .progress-card {
+    grid-template-columns: 1fr;
+  }
 
-    .progress-card {
-        grid-template-columns: 1fr;
-    }
+  .suspect {
+    display: block;
+  }
 
-    .suspect {
-        display: block;
-    }
+  .role {
+    margin-top: 7px;
+  }
 
-    .role {
-        margin-top: 7px;
-    }
+  .timeline {
+    padding-left: 25px;
+  }
 
-    .timeline {
-        padding-left: 25px;
-    }
+  .timeline::before {
+    left: 5px;
+  }
 
-    .timeline::before {
-        left: 5px;
-    }
+  .timeline-item::before {
+    left: -24px;
+  }
 
-    .timeline-item::before {
-        left: -24px;
-    }
-
-    .start-btn {
-        width: 100%;
-    }
-
+  .start-btn {
+    width: 100%;
+  }
 }
-
 
 /* =====================================================
    SCROLLBAR
 ===================================================== */
 
 ::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #0b0d10;
+  background: #0b0d10;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #343a43;
+  background: #343a43;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #4a515d;
+  background: #4a515d;
 }
-
 
 /* =====================================================
    SELECTION
 ===================================================== */
 
 ::selection {
-    background: #6d737d;
-    color: #ffffff;
+  background: #6d737d;
+  color: #ffffff;
 }
+```
