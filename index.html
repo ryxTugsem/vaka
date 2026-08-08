@@ -1,0 +1,2346 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>VAKA-1407 — The Miller Murder</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+</head>
+
+<body>
+
+<!-- =====================================================
+     GİRİŞ
+===================================================== -->
+
+<section id="intro" class="screen active">
+
+    <div class="intro-box">
+
+        <div class="case-number">
+            MILLER INVESTIGATION UNIT
+        </div>
+
+        <h1>VAKA-1407</h1>
+
+        <div class="subtitle">
+            THE MILLER MURDER
+        </div>
+
+        <div class="classified">
+            CLASSIFIED // EYES ONLY
+        </div>
+
+        <p class="intro-text">
+
+            Bir adam öldürüldü.<br>
+            Yedi şüpheli var.<br>
+            Herkesin sakladığı bir şey var.
+
+        </p>
+
+        <button
+            class="start-btn"
+            onclick="startInvestigation()"
+        >
+            SORUŞTURMAYI BAŞLAT
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     BRIEFING
+===================================================== -->
+
+<section id="briefing" class="screen">
+
+    <div class="header">
+
+        <small>
+            VAKA-1407 / GİZLİ DOSYA
+        </small>
+
+        <h2>
+            Vaka Dosyası
+        </h2>
+
+    </div>
+
+    <div class="timer-card">
+
+        <div class="timer-label">
+            SORUŞTURMA SÜRESİ
+        </div>
+
+        <div id="timer" class="timer">
+            20:00
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="section-label">
+            MAĞDUR
+        </div>
+
+        <h3>
+            William Miller
+        </h3>
+
+        <p>
+
+            Yıllardır kozmetik ürünleri üreten
+            Miller firmasının sahibi olan William
+            Miller, evinde bulunan ofis odasında
+            ölü bulundu.
+
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="section-label">
+            OLAY YERİ
+        </div>
+
+        <p>
+
+            Evin arkasında yoğun bir orman
+            bulunmaktadır.
+
+            Ormanın içinden bir dere yatağı
+            geçmektedir.
+
+        </p>
+
+        <br>
+
+        <p>
+
+            Ofis odasında dışarıdan açılabilen
+            bir balkon kapısı vardır.
+
+        </p>
+
+    </div>
+
+
+    <div class="card warning-card">
+
+        <div class="section-label">
+            DOSYA NOTU
+        </div>
+
+        <p>
+
+            İlk bakışta olay bir intihar gibi
+            görünmektedir.
+
+            Ancak adli bulgular ve olay yerindeki
+            bazı ayrıntılar bu ihtimali
+            sorgulamaktadır.
+
+        </p>
+
+        <br>
+
+        <p>
+
+            <b>
+                Görevin:
+            </b>
+
+            Cinayet mi, intihar mı olduğunu
+            belirlemek ve katili bulmak.
+
+        </p>
+
+    </div>
+
+
+    <button
+        class="menu-btn"
+        onclick="showScreen('menu')"
+    >
+        DOSYAYI AÇ →
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     ANA MENÜ
+===================================================== -->
+
+<section id="menu" class="screen">
+
+    <div class="header">
+
+        <small>
+            VAKA-1407 / SORUŞTURMA PANELİ
+        </small>
+
+        <h2>
+            Soruşturma Merkezi
+        </h2>
+
+    </div>
+
+
+    <div class="timer-card small-timer">
+
+        <div class="timer-label">
+            KALAN SÜRE
+        </div>
+
+        <div id="menuTimer" class="timer">
+            20:00
+        </div>
+
+    </div>
+
+
+    <div class="progress-card">
+
+        <div>
+            DELİLLER
+            <span id="evidenceCount">0</span>
+        </div>
+
+        <div>
+            SORGULAR
+            <span id="interrogationCount">0</span>
+        </div>
+
+        <div>
+            PUAN
+            <span id="score">0</span>
+        </div>
+
+    </div>
+
+
+    <button
+        class="menu-btn"
+        onclick="showScreen('evidence')"
+    >
+        📂 DELİL DOSYALARI
+    </button>
+
+
+    <button
+        class="menu-btn"
+        onclick="showScreen('suspects')"
+    >
+        👥 ŞÜPHELİLER
+    </button>
+
+
+    <button
+        class="menu-btn"
+        onclick="showScreen('interrogations')"
+    >
+        💬 SORGU ODASI
+    </button>
+
+
+    <button
+        class="menu-btn"
+        onclick="showScreen('timeline')"
+    >
+        🕐 OLAY KRONOLOJİSİ
+    </button>
+
+
+    <button
+        class="menu-btn"
+        onclick="showScreen('laboratory')"
+    >
+        🧪 ADLİ LABORATUVAR
+    </button>
+
+
+    <button
+        class="menu-btn"
+        onclick="showScreen('phone')"
+    >
+        📱 WILLIAM'IN TELEFONU
+    </button>
+
+
+    <button
+        class="menu-btn"
+        onclick="showScreen('camera')"
+    >
+        📹 GÜVENLİK KAMERALARI
+    </button>
+
+
+    <button
+        class="menu-btn"
+        onclick="showScreen('combine')"
+    >
+        🧩 DELİLLERİ BİRLEŞTİR
+    </button>
+
+
+    <button
+        class="menu-btn"
+        onclick="showScreen('scene')"
+    >
+        🏠 OLAY YERİ
+    </button>
+
+
+    <button
+        class="menu-btn"
+        onclick="showScreen('notebook')"
+    >
+        📝 DEDEKTİF DEFTERİ
+    </button>
+
+
+    <button
+        class="menu-btn"
+        onclick="showScreen('accuse')"
+    >
+        ⚖️ SON KARAR
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     DELİLLER
+===================================================== -->
+
+<section id="evidence" class="screen">
+
+    <div class="header">
+
+        <small>
+            VAKA-1407 / DELİL ARŞİVİ
+        </small>
+
+        <h2>
+            Delil Dosyaları
+        </h2>
+
+        <p>
+            Her ayrıntıyı dikkatli incele.
+        </p>
+
+    </div>
+
+
+    <div class="card evidence">
+
+        <div class="evidence-number">
+            DELİL 01
+        </div>
+
+        <h3>
+            Adli Tıp Raporu
+        </h3>
+
+        <button
+            onclick="collectEvidence('autopsy'); toggle(this)"
+        >
+            RAPORU İNCELE
+        </button>
+
+        <div class="details">
+
+            Masadaki ilaçların ölüm sebebi
+            olmadığı belirlendi.
+
+            <br><br>
+
+            Ölüm sebebi:
+
+            <b>
+                güçlü bir fare zehri.
+            </b>
+
+            <br><br>
+
+            Ayrıca William Miller'ın
+            ağzından kan geldiği tespit edildi.
+
+        </div>
+
+    </div>
+
+
+    <div class="card evidence">
+
+        <div class="evidence-number">
+            DELİL 02
+        </div>
+
+        <h3>
+            Ayakkabılar
+        </h3>
+
+        <button
+            onclick="collectEvidence('shoes'); toggle(this)"
+        >
+            İNCELE
+        </button>
+
+        <div class="details">
+
+            Ayakkabıların topuk kısmında
+            belirgin zedelenme ve aşınma
+            bulundu.
+
+            <br><br>
+
+            <b>Dedektif notu:</b>
+
+            <br>
+
+            "Sanki sürüklenmiş gibi."
+
+        </div>
+
+    </div>
+
+
+    <div class="card evidence">
+
+        <div class="evidence-number">
+            DELİL 03
+        </div>
+
+        <h3>
+            Balkon Kapısı
+        </h3>
+
+        <button
+            onclick="collectEvidence('balcony'); toggle(this)"
+        >
+            İNCELE
+        </button>
+
+        <div class="details">
+
+            Balkon kapısı dışarıdan
+            açılabiliyor.
+
+            <br><br>
+
+            Cinayet gecesi balkon kapısının
+            anahtarı içeride takılıydı.
+
+        </div>
+
+    </div>
+
+
+    <div class="card evidence">
+
+        <div class="evidence-number">
+            DELİL 04
+        </div>
+
+        <h3>
+            Masadaki Not
+        </h3>
+
+        <button
+            onclick="collectEvidence('note'); toggle(this)"
+        >
+            NOTU OKU
+        </button>
+
+        <div class="details">
+
+            <i>
+                "Üzgünüm sevgilim, seçtiğin kişi
+                ben değilsem bir daha kimseyi
+                seçemeyeceksin demiştim."
+            </i>
+
+            <br><br>
+
+            Notun yazarı kesin olarak
+            belirlenemedi.
+
+        </div>
+
+    </div>
+
+
+    <div class="card evidence">
+
+        <div class="evidence-number">
+            DELİL 05
+        </div>
+
+        <h3>
+            Orman İzleri
+        </h3>
+
+        <button
+            onclick="collectEvidence('forest'); toggle(this)"
+        >
+            İNCELE
+        </button>
+
+        <div class="details">
+
+            Malikânenin arkasındaki ormana
+            doğru çamurlu ayakkabı izleri
+            tespit edildi.
+
+            <br><br>
+
+            İzler dere yatağına kadar
+            devam ediyor.
+
+        </div>
+
+    </div>
+
+
+    <div class="card evidence">
+
+        <div class="evidence-number">
+            DELİL 06
+        </div>
+
+        <h3>
+            Balkon Korkuluğu
+        </h3>
+
+        <button
+            onclick="collectEvidence('fiber'); toggle(this)"
+        >
+            İNCELE
+        </button>
+
+        <div class="details">
+
+            Balkon korkuluğunun dış kısmında
+            koyu renkli bir kumaş lifi bulundu.
+
+        </div>
+
+    </div>
+
+
+    <div class="card evidence">
+
+        <div class="evidence-number">
+            DELİL 07
+        </div>
+
+        <h3>
+            Dere Kenarındaki Metal Parça
+        </h3>
+
+        <button
+            onclick="collectEvidence('metal'); toggle(this)"
+        >
+            İNCELE
+        </button>
+
+        <div class="details">
+
+            Dere kenarında küçük bir metal
+            parçası bulundu.
+
+            <br><br>
+
+            Üzerinde:
+
+            <b>
+                O.S.
+            </b>
+
+            baş harfleri bulunuyor.
+
+        </div>
+
+    </div>
+
+
+    <div class="card evidence">
+
+        <div class="evidence-number">
+            DELİL 08
+        </div>
+
+        <h3>
+            Güvenlik Kameraları
+        </h3>
+
+        <button
+            onclick="collectEvidence('camera'); toggle(this)"
+        >
+            KAYDI İNCELE
+        </button>
+
+        <div class="details">
+
+            Güvenlik kameraları yaklaşık
+            20 dakika boyunca kapalı kaldı.
+
+            <br><br>
+
+            Kameraların kapatıldığı sırada
+            Alex T. görevdeydi.
+
+        </div>
+
+    </div>
+
+
+    <div class="card evidence">
+
+        <div class="evidence-number">
+            DELİL 09
+        </div>
+
+        <h3>
+            William'ın Telefon Mesajı
+        </h3>
+
+        <button
+            onclick="collectEvidence('message'); toggle(this)"
+        >
+            MESAJI İNCELE
+        </button>
+
+        <div class="details">
+
+            <b>
+                Gönderen:
+            </b>
+
+            Bilinmeyen Numara
+
+            <br><br>
+
+            <b>
+                Saat:
+            </b>
+
+            20:52
+
+            <br><br>
+
+            <i>
+                "Bu gece kararını vermek zorundasın."
+            </i>
+
+        </div>
+
+    </div>
+
+
+    <div class="card evidence">
+
+        <div class="evidence-number">
+            DELİL 10
+        </div>
+
+        <h3>
+            Şirket Çıkış Kaydı
+        </h3>
+
+        <button
+            onclick="collectEvidence('oliviaExit'); toggle(this)"
+        >
+            KAYDI İNCELE
+        </button>
+
+        <div class="details">
+
+            Olivia S.'nin şirketten çıkış saati:
+
+            <b>
+                21:00
+            </b>
+
+            <br><br>
+
+            Olivia ise cinayet gecesi
+            malikâneye hiç gitmediğini
+            söylüyor.
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="back"
+        onclick="showScreen('menu')"
+    >
+        ← SORUŞTURMA PANELİ
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     ŞÜPHELİLER
+===================================================== -->
+
+<section id="suspects" class="screen">
+
+    <div class="header">
+
+        <small>
+            VAKA-1407 / ŞÜPHELİ DOSYALARI
+        </small>
+
+        <h2>
+            Şüpheliler
+        </h2>
+
+    </div>
+
+
+    <div class="card suspect">
+        <div class="suspect-name">Jack R.</div>
+        <div class="role">İş Ortağı</div>
+    </div>
+
+
+    <div class="card suspect">
+        <div class="suspect-name">Sofia K.</div>
+        <div class="role">Asistan</div>
+    </div>
+
+
+    <div class="card suspect">
+        <div class="suspect-name">Katherine C.</div>
+        <div class="role">Metres</div>
+    </div>
+
+
+    <div class="card suspect">
+        <div class="suspect-name">Alex T.</div>
+        <div class="role">Güvenlik Görevlisi</div>
+    </div>
+
+
+    <div class="card suspect">
+        <div class="suspect-name">Emma Miller</div>
+        <div class="role">William Miller'ın Eşi</div>
+    </div>
+
+
+    <div class="card suspect">
+        <div class="suspect-name">James Miller</div>
+        <div class="role">William Miller'ın Kardeşi</div>
+    </div>
+
+
+    <div class="card suspect">
+        <div class="suspect-name">Olivia S.</div>
+        <div class="role">Jack R.'nin Asistanı</div>
+    </div>
+
+
+    <button
+        class="back"
+        onclick="showScreen('menu')"
+    >
+        ← SORUŞTURMA PANELİ
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     SORGU
+===================================================== -->
+
+<section id="interrogations" class="screen">
+
+    <div class="header">
+
+        <small>
+            VAKA-1407 / SORGU ODASI
+        </small>
+
+        <h2>
+            Şüpheli İfadeleri
+        </h2>
+
+        <p>
+            Cevapları olay kronolojisiyle karşılaştır.
+        </p>
+
+    </div>
+
+
+    <!-- JACK -->
+
+    <div class="card">
+
+        <h3>Jack R.</h3>
+
+        <div class="role">
+            İş Ortağı
+        </div>
+
+
+        <button
+            class="question"
+            onclick="completeInterrogation('Jack'); answer(this)"
+        >
+            William ile son ne zaman görüştünüz?
+        </button>
+
+        <div class="answer">
+
+            Akşam saatlerinde telefonda
+            konuştuk.
+
+            <br><br>
+
+            Şirketin geleceği hakkında
+            tartıştık.
+
+            <br><br>
+
+            Yaklaşık 21:00 civarında
+            konuşmayı bitirdik.
+
+        </div>
+
+
+        <button
+            class="question"
+            onclick="completeInterrogation('Jack'); answer(this)"
+        >
+            William ile aranızda sorun var mıydı?
+        </button>
+
+        <div class="answer">
+
+            İş konusunda bazı
+            anlaşmazlıklarımız vardı.
+
+            <br><br>
+
+            Ama onu öldürmek için
+            hiçbir sebebim yoktu.
+
+        </div>
+
+
+        <button
+            class="question"
+            onclick="completeInterrogation('Jack'); answer(this)"
+        >
+            Olivia o gece neredeydi?
+        </button>
+
+        <div class="answer">
+
+            Bildiğim kadarıyla evindeydi.
+
+            <br><br>
+
+            O gece kendisiyle
+            görüşmedim.
+
+        </div>
+
+    </div>
+
+
+    <!-- SOFIA -->
+
+    <div class="card">
+
+        <h3>Sofia K.</h3>
+
+        <div class="role">
+            Asistan
+        </div>
+
+
+        <button
+            class="question"
+            onclick="completeInterrogation('Sofia'); answer(this)"
+        >
+            William son günlerde nasıldı?
+        </button>
+
+        <div class="answer">
+
+            Çok gergindi.
+
+            <br><br>
+
+            Özellikle birinin kendisini
+            takip ettiğini düşünüyordu.
+
+        </div>
+
+
+        <button
+            class="question"
+            onclick="completeInterrogation('Sofia'); answer(this)"
+        >
+            Masadaki notu daha önce gördünüz mü?
+        </button>
+
+        <div class="answer">
+
+            Hayır.
+
+            <br><br>
+
+            O notu daha önce
+            hiç görmedim.
+
+        </div>
+
+
+        <button
+            class="question"
+            onclick="completeInterrogation('Sofia'); answer(this)"
+        >
+            William'ın özel hayatı hakkında ne biliyorsunuz?
+        </button>
+
+        <div class="answer">
+
+            William'ın eşiyle problemleri vardı.
+
+            <br><br>
+
+            Ayrıca Katherine isimli bir kadınla
+            ilişkisi olduğunu duymuştum.
+
+        </div>
+
+    </div>
+
+
+    <!-- KATHERINE -->
+
+    <div class="card">
+
+        <h3>Katherine C.</h3>
+
+        <div class="role">
+            Metres
+        </div>
+
+
+        <button
+            class="question"
+            onclick="completeInterrogation('Katherine'); answer(this)"
+        >
+            William ile ilişkiniz var mıydı?
+        </button>
+
+        <div class="answer">
+
+            Evet.
+
+            <br><br>
+
+            Bunu saklamaya çalışıyorduk.
+
+        </div>
+
+
+        <button
+            class="question"
+            onclick="completeInterrogation('Katherine'); answer(this)"
+        >
+            Cinayet gecesi William ile görüştünüz mü?
+        </button>
+
+        <div class="answer">
+
+            Hayır.
+
+            <br><br>
+
+            Ona mesaj gönderdim
+            ama cevap vermedi.
+
+        </div>
+
+
+        <button
+            class="question"
+            onclick="completeInterrogation('Katherine'); answer(this)"
+        >
+            William başka birini seçmekten bahsetti mi?
+        </button>
+
+        <div class="answer">
+
+            Bana bir karar vermesi
+            gerektiğini söylemişti.
+
+            <br><br>
+
+            Ama ne hakkında olduğunu
+            açıkça söylemedi.
+
+        </div>
+
+    </div>
+
+
+    <!-- ALEX -->
+
+    <div class="card">
+
+        <h3>Alex T.</h3>
+
+        <div class="role">
+            Güvenlik Görevlisi
+        </div>
+
+
+        <button
+            class="question"
+            onclick="completeInterrogation('Alex'); answer(this)"
+        >
+            Kameraları neden kapattınız?
+        </button>
+
+        <div class="answer">
+
+            Kameraları ben kapattım.
+
+            <br><br>
+
+            Ama bunun William'la
+            ilgisi yoktu.
+
+        </div>
+
+
+        <button
+            class="question"
+            onclick="completeInterrogation('Alex'); answer(this)"
+        >
+            Neden kapattınız?
+        </button>
+
+        <div class="answer">
+
+            Emma Miller ile gizli
+            bir ilişkim vardı.
+
+            <br><br>
+
+            O gece onunla görüşecektim.
+
+        </div>
+
+
+        <button
+            class="question"
+            onclick="completeInterrogation('Alex'); answer(this)"
+        >
+            Kameralar ne kadar kapalı kaldı?
+        </button>
+
+        <div class="answer">
+
+            Yaklaşık 20 dakika.
+
+        </div>
+
+    </div>
+
+
+    <!-- EMMA -->
+
+    <div class="card">
+
+        <h3>Emma Miller</h3>
+
+        <div class="role">
+            William'ın Eşi
+        </div>
+
+
+        <button
+            class="question"
+            onclick="completeInterrogation('Emma'); answer(this)"
+        >
+            William ile evliliğiniz nasıldı?
+        </button>
+
+        <div class="answer">
+
+            Son zamanlarda iyi değildi.
+
+            <br><br>
+
+            Sürekli tartışıyorduk.
+
+        </div>
+
+
+        <button
+            class="question"
+            onclick="completeInterrogation('Emma'); answer(this)"
+        >
+            Cinayet gecesi neredeydiniz?
+        </button>
+
+        <div class="answer">
+
+            Bir süre evin içinde dolaştım.
+
+            <br><br>
+
+            Daha sonra ofise gittim.
+
+        </div>
+
+
+        <button
+            class="question"
+            onclick="completeInterrogation('Emma'); answer(this)"
+        >
+            Alex T. ile ilişkiniz var mı?
+        </button>
+
+        <div class="answer">
+
+            ...
+
+            <br><br>
+
+            Evet.
+
+            <br><br>
+
+            Ama William'ı öldürmedim.
+
+        </div>
+
+    </div>
+
+
+    <!-- JAMES -->
+
+    <div class="card">
+
+        <h3>James Miller</h3>
+
+        <div class="role">
+            William'ın Kardeşi
+        </div>
+
+
+        <button
+            class="question"
+            onclick="completeInterrogation('James'); answer(this)"
+        >
+            William ile ilişkiniz nasıldı?
+        </button>
+
+        <div class="answer">
+
+            Kardeştik.
+
+            <br><br>
+
+            Son zamanlarda şirket
+            konusunda tartışmalarımız vardı.
+
+        </div>
+
+
+        <button
+            class="question"
+            onclick="completeInterrogation('James'); answer(this)"
+        >
+            William'ın ölümü size fayda sağlar mı?
+        </button>
+
+        <div class="answer">
+
+            Miras konusunda bazı
+            haklarım olabilir.
+
+            <br><br>
+
+            Ama bu onu öldürdüğüm
+            anlamına gelmez.
+
+        </div>
+
+
+        <button
+            class="question"
+            onclick="completeInterrogation('James'); answer(this)"
+        >
+            Cinayet gecesi neredeydiniz?
+        </button>
+
+        <div class="answer">
+
+            Evimin yakınındaydım.
+
+            <br><br>
+
+            William'ın evine gitmedim.
+
+        </div>
+
+    </div>
+
+
+    <!-- OLIVIA -->
+
+    <div class="card">
+
+        <h3>Olivia S.</h3>
+
+        <div class="role">
+            Jack R.'nin Asistanı
+        </div>
+
+
+        <button
+            class="question"
+            onclick="completeInterrogation('Olivia'); answer(this)"
+        >
+            William'ı tanıyor muydunuz?
+        </button>
+
+        <div class="answer">
+
+            Jack Bey'in iş ortağıydı.
+
+            <br><br>
+
+            Dolayısıyla kendisini
+            tanıyordum.
+
+        </div>
+
+
+        <button
+            class="question"
+            onclick="completeInterrogation('Olivia'); answer(this)"
+        >
+            William'a karşı özel bir şey hissediyor muydunuz?
+        </button>
+
+        <div class="answer">
+
+            Hayır.
+
+            <br><br>
+
+            Böyle bir şey yoktu.
+
+        </div>
+
+
+        <button
+            class="question"
+            onclick="completeInterrogation('Olivia'); answer(this)"
+        >
+            Cinayet gecesi neredeydiniz?
+        </button>
+
+        <div class="answer">
+
+            Evimdeydim.
+
+            <br><br>
+
+            Malikâneye hiç gitmedim.
+
+        </div>
+
+
+        <button
+            class="question"
+            onclick="completeInterrogation('Olivia'); answer(this)"
+        >
+            O gece malikâneye gittiniz mi?
+        </button>
+
+        <div class="answer">
+
+            Hayır.
+
+            <br><br>
+
+            Oraya neden gideyim ki?
+
+        </div>
+
+
+        <button
+            class="question"
+            onclick="completeInterrogation('Olivia'); answer(this)"
+        >
+            William'ın başka birini seçtiğini biliyor muydunuz?
+        </button>
+
+        <div class="answer">
+
+            Ne demek istediğinizi
+            anlamıyorum.
+
+            <br><br>
+
+            William'ın özel hayatıyla
+            ilgilenmiyordum.
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="back"
+        onclick="showScreen('menu')"
+    >
+        ← SORUŞTURMA PANELİ
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     OLAY KRONOLOJİSİ
+===================================================== -->
+
+<section id="timeline" class="screen">
+
+    <div class="header">
+
+        <small>
+            VAKA-1407 / ZAMAN ÇİZELGESİ
+        </small>
+
+        <h2>
+            Olay Kronolojisi
+        </h2>
+
+        <p>
+            İfadelerdeki saatleri karşılaştır.
+        </p>
+
+    </div>
+
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+
+            <div class="timeline-time">
+                20:52
+            </div>
+
+            <div class="timeline-content">
+
+                William'ın telefonuna
+                bilinmeyen numaradan mesaj
+                geliyor.
+
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-time">
+                21:00
+            </div>
+
+            <div class="timeline-content">
+
+                Olivia'nın şirket çıkış kaydı
+                oluşturuluyor.
+
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-time">
+                21:00+
+            </div>
+
+            <div class="timeline-content">
+
+                Jack, William ile telefon
+                görüşmesini bitirdiğini söylüyor.
+
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-time">
+                ??:??
+            </div>
+
+            <div class="timeline-content">
+
+                Güvenlik kameraları yaklaşık
+                20 dakika devre dışı.
+
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-time">
+                22:30
+            </div>
+
+            <div class="timeline-content">
+
+                Emma, William'ın ofisine
+                girdiğini söylüyor.
+
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-time">
+                SONRA
+            </div>
+
+            <div class="timeline-content">
+
+                Aşçı ofise giriyor ve
+                Emma'yı William'ın yanında
+                görüyor.
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="section-label">
+            DEDEKTİF NOTU
+        </div>
+
+        <p>
+
+            Zaman çizelgesinde özellikle
+            <b>21:00 ile 22:30 arasına</b>
+            dikkat et.
+
+        </p>
+
+    </div>
+
+
+    <button
+        class="back"
+        onclick="showScreen('menu')"
+    >
+        ← SORUŞTURMA PANELİ
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     LABORATUVAR
+===================================================== -->
+
+<section id="laboratory" class="screen">
+
+    <div class="header">
+
+        <small>
+            VAKA-1407 / ADLİ LABORATUVAR
+        </small>
+
+        <h2>
+            Laboratuvar Raporları
+        </h2>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="section-label">
+            RAPOR A
+        </div>
+
+        <h3>
+            Toksikoloji
+        </h3>
+
+        <p>
+
+            Ölüm sebebinin masadaki ilaçlar
+            olmadığı doğrulandı.
+
+            <br><br>
+
+            Kan örneğinde güçlü bir
+            fare zehri bulundu.
+
+        </p>
+
+    </div>
+
+
+    <div class="card locked-report">
+
+        <div class="section-label">
+            RAPOR B
+        </div>
+
+        <h3>
+            Zehir Kaynağı
+        </h3>
+
+        <p>
+            Bu rapor henüz kilitli.
+        </p>
+
+        <button
+            class="menu-btn"
+            onclick="unlockLaboratory()"
+        >
+            RAPORU AÇ
+        </button>
+
+        <div id="labResult"></div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="section-label">
+            RAPOR C
+        </div>
+
+        <h3>
+            Kumaş Analizi
+        </h3>
+
+        <p>
+
+            Balkon korkuluğunda bulunan
+            kumaş lifi koyu renkli bir
+            kıyafetten kopmuş olabilir.
+
+            <br><br>
+
+            Tek başına kesin kimlik
+            tespiti yapılamadı.
+
+        </p>
+
+    </div>
+
+
+    <button
+        class="back"
+        onclick="showScreen('menu')"
+    >
+        ← SORUŞTURMA PANELİ
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     TELEFON
+===================================================== -->
+
+<section id="phone" class="screen">
+
+    <div class="header">
+
+        <small>
+            VAKA-1407 / DİJİTAL DELİL
+        </small>
+
+        <h2>
+            William'ın Telefonu
+        </h2>
+
+    </div>
+
+
+    <div class="card phone-lock">
+
+        <div class="phone-icon">
+            📱
+        </div>
+
+        <h3>
+            Cihaz Kilitli
+        </h3>
+
+        <p>
+
+            Telefon 4 haneli bir şifre
+            istiyor.
+
+        </p>
+
+        <p>
+            İpucu:
+            <b>
+                Olayın önemli saatlerinden
+                birini düşün.
+            </b>
+        </p>
+
+
+        <input
+            id="phoneCode"
+            class="code-input"
+            type="text"
+            maxlength="4"
+            placeholder="____"
+        >
+
+
+        <button
+            class="menu-btn"
+            onclick="unlockPhone()"
+        >
+            TELEFONUN KİLİDİNİ AÇ
+        </button>
+
+
+        <div id="phoneResult"></div>
+
+    </div>
+
+
+    <div
+        id="phoneContent"
+        class="card hidden-content"
+    >
+
+        <div class="section-label">
+            GİZLİ MESAJLAR
+        </div>
+
+        <h3>
+            Silinmiş Konuşma Kurtarıldı
+        </h3>
+
+        <p>
+
+            <b>
+                20:52 — Bilinmeyen:
+            </b>
+
+            <br>
+
+            "Bu gece kararını vermek zorundasın."
+
+        </p>
+
+        <br>
+
+        <p>
+
+            <b>
+                21:07 — William:
+            </b>
+
+            <br>
+
+            "Bunu yapamam."
+
+        </p>
+
+        <br>
+
+        <p>
+
+            <b>
+                21:09 — Bilinmeyen:
+            </b>
+
+            <br>
+
+            "O zaman seçimini senin yerine
+            yaparım."
+
+        </p>
+
+    </div>
+
+
+    <button
+        class="back"
+        onclick="showScreen('menu')"
+    >
+        ← SORUŞTURMA PANELİ
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     KAMERA
+===================================================== -->
+
+<section id="camera" class="screen">
+
+    <div class="header">
+
+        <small>
+            VAKA-1407 / GÜVENLİK SİSTEMİ
+        </small>
+
+        <h2>
+            Kamera Kayıtları
+        </h2>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="section-label">
+            KAYIT 01
+        </div>
+
+        <h3>
+            Kamera Sistemi
+        </h3>
+
+        <p>
+
+            Sistem yaklaşık 20 dakika
+            boyunca devre dışı bırakılmış.
+
+        </p>
+
+        <p>
+
+            Güvenlik görevlisi:
+
+            <b>
+                Alex T.
+            </b>
+
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="section-label">
+            KAYIT 02
+        </div>
+
+        <h3>
+            Kamera Logları
+        </h3>
+
+        <button
+            class="menu-btn"
+            onclick="revealCamera()"
+        >
+            KAYIT DETAYLARINI AÇ
+        </button>
+
+        <div
+            id="cameraResult"
+            class="hidden-content"
+        >
+
+            <p>
+
+                Kameraların kapatılması
+                manuel olarak yapılmış.
+
+            </p>
+
+            <br>
+
+            <p>
+
+                Alex, kameraları kapattığını
+                kabul ediyor.
+
+            </p>
+
+            <br>
+
+            <p>
+
+                Sebep:
+
+                <b>
+                    Emma Miller ile gizli
+                    görüşme.
+                </b>
+
+            </p>
+
+            <br>
+
+            <p>
+
+                Bu durum Alex'i şüpheli
+                yapıyor ancak tek başına
+                cinayeti kanıtlamıyor.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="back"
+        onclick="showScreen('menu')"
+    >
+        ← SORUŞTURMA PANELİ
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     DELİL BİRLEŞTİRME
+===================================================== -->
+
+<section id="combine" class="screen">
+
+    <div class="header">
+
+        <small>
+            VAKA-1407 / ANALİZ
+        </small>
+
+        <h2>
+            Delilleri Birleştir
+        </h2>
+
+        <p>
+            İki doğru delili eşleştirerek
+            yeni bağlantılar ortaya çıkar.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="section-label">
+            EŞLEŞTİRME 01
+        </div>
+
+        <h3>
+            Hangi iki delil birbirini destekliyor?
+        </h3>
+
+
+        <select id="combineOne">
+
+            <option value="">
+                Birinci delili seç
+            </option>
+
+            <option value="note">
+                Masadaki not
+            </option>
+
+            <option value="camera">
+                Kamera kaydı
+            </option>
+
+            <option value="shoes">
+                Ayakkabılar
+            </option>
+
+            <option value="metal">
+                O.S. metal parçası
+            </option>
+
+        </select>
+
+
+        <select id="combineTwo">
+
+            <option value="">
+                İkinci delili seç
+            </option>
+
+            <option value="note">
+                Masadaki not
+            </option>
+
+            <option value="camera">
+                Kamera kaydı
+            </option>
+
+            <option value="shoes">
+                Ayakkabılar
+            </option>
+
+            <option value="metal">
+                O.S. metal parçası
+            </option>
+
+        </select>
+
+
+        <button
+            class="menu-btn"
+            onclick="combineEvidence()"
+        >
+            DELİLLERİ KARŞILAŞTIR
+        </button>
+
+
+        <div id="combineResult"></div>
+
+    </div>
+
+
+    <button
+        class="back"
+        onclick="showScreen('menu')"
+    >
+        ← SORUŞTURMA PANELİ
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     OLAY YERİ
+===================================================== -->
+
+<section id="scene" class="screen">
+
+    <div class="header">
+
+        <small>
+            VAKA-1407 / OLAY YERİ
+        </small>
+
+        <h2>
+            Malikâne
+        </h2>
+
+    </div>
+
+
+    <div class="card scene-card">
+
+        <div class="scene-icon">
+            🖥️
+        </div>
+
+        <h3>
+            Ofis
+        </h3>
+
+        <p>
+
+            William Miller burada bulundu.
+
+            <br><br>
+
+            Masada ilaçlar ve şüpheli
+            bir not vardı.
+
+        </p>
+
+    </div>
+
+
+    <div class="card scene-card">
+
+        <div class="scene-icon">
+            🚪
+        </div>
+
+        <h3>
+            Balkon
+        </h3>
+
+        <p>
+
+            Kapı dışarıdan açılabiliyor.
+
+            <br><br>
+
+            Anahtar olay sırasında
+            içerideydi.
+
+        </p>
+
+    </div>
+
+
+    <div class="card scene-card">
+
+        <div class="scene-icon">
+            🌲
+        </div>
+
+        <h3>
+            Orman
+        </h3>
+
+        <p>
+
+            Ormana doğru çamurlu izler
+            tespit edildi.
+
+        </p>
+
+    </div>
+
+
+    <div class="card scene-card">
+
+        <div class="scene-icon">
+            🌊
+        </div>
+
+        <h3>
+            Dere Yatağı
+        </h3>
+
+        <p>
+
+            Dere kenarında üzerinde
+            <b>O.S.</b> bulunan metal
+            parça bulundu.
+
+        </p>
+
+    </div>
+
+
+    <button
+        class="back"
+        onclick="showScreen('menu')"
+    >
+        ← SORUŞTURMA PANELİ
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     DEDEKTİF DEFTERİ
+===================================================== -->
+
+<section id="notebook" class="screen">
+
+    <div class="header">
+
+        <small>
+            VAKA-1407 / DEDEKTİF DEFTERİ
+        </small>
+
+        <h2>
+            Dedektif Defteri
+        </h2>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="section-label">
+            ÖNEMLİ İPUÇLARI
+        </div>
+
+
+        <label class="clue">
+            <input type="checkbox">
+            Ölüm sebebi güçlü fare zehri.
+        </label>
+
+
+        <label class="clue">
+            <input type="checkbox">
+            Masadaki ilaçlar ölüm sebebi değil.
+        </label>
+
+
+        <label class="clue">
+            <input type="checkbox">
+            Balkon kapısı dışarıdan açılabiliyor.
+        </label>
+
+
+        <label class="clue">
+            <input type="checkbox">
+            Anahtar içerideydi.
+        </label>
+
+
+        <label class="clue">
+            <input type="checkbox">
+            Ayakkabıların topukları zedelenmiş.
+        </label>
+
+
+        <label class="clue">
+            <input type="checkbox">
+            Kameralar 20 dakika kapalı.
+        </label>
+
+
+        <label class="clue">
+            <input type="checkbox">
+            Alex kameraları kapattı.
+        </label>
+
+
+        <label class="clue">
+            <input type="checkbox">
+            Alex ve Emma gizli ilişki yaşıyordu.
+        </label>
+
+
+        <label class="clue">
+            <input type="checkbox">
+            Olivia malikâneye gitmediğini söylüyor.
+        </label>
+
+
+        <label class="clue">
+            <input type="checkbox">
+            Olivia'nın şirket çıkışı 21:00.
+        </label>
+
+
+        <label class="clue">
+            <input type="checkbox">
+            Dere kenarında O.S. bulundu.
+        </label>
+
+
+        <label class="clue">
+            <input type="checkbox">
+            Masadaki not kıskançlık ihtimalini düşündürüyor.
+        </label>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="section-label">
+            KENDİ NOTLARIN
+        </div>
+
+        <textarea
+            id="detectiveNotes"
+            placeholder="Teorilerini buraya yaz..."
+        ></textarea>
+
+
+        <button
+            class="menu-btn"
+            onclick="saveNotes()"
+        >
+            NOTLARI KAYDET
+        </button>
+
+
+        <div
+            id="notesSaved"
+            class="saved-message"
+        >
+            ✓ Notların kaydedildi.
+        </div>
+
+    </div>
+
+
+    <button
+        class="back"
+        onclick="showScreen('menu')"
+    >
+        ← SORUŞTURMA PANELİ
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     SON KARAR
+===================================================== -->
+
+<section id="accuse" class="screen">
+
+    <div class="header">
+
+        <small>
+            VAKA-1407 / SON KARAR
+        </small>
+
+        <h2>
+            Katil Kim?
+        </h2>
+
+        <p>
+            Karar vermeden önce tüm kanıtları
+            değerlendir.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="section-label">
+            UYARI
+        </div>
+
+        <p>
+
+            Yeterli delil toplamadan
+            suçlama yapmak puan kaybettirir.
+
+        </p>
+
+        <p>
+
+            <b>
+                Dedektiflik sadece tahmin etmek
+                değildir.
+            </b>
+
+        </p>
+
+    </div>
+
+
+    <button
+        class="choice"
+        onclick="accuse('Jack')"
+    >
+        Jack R.
+    </button>
+
+
+    <button
+        class="choice"
+        onclick="accuse('Sofia')"
+    >
+        Sofia K.
+    </button>
+
+
+    <button
+        class="choice"
+        onclick="accuse('Katherine')"
+    >
+        Katherine C.
+    </button>
+
+
+    <button
+        class="choice"
+        onclick="accuse('Alex')"
+    >
+        Alex T.
+    </button>
+
+
+    <button
+        class="choice"
+        onclick="accuse('Emma')"
+    >
+        Emma Miller
+    </button>
+
+
+    <button
+        class="choice"
+        onclick="accuse('James')"
+    >
+        James Miller
+    </button>
+
+
+    <button
+        class="choice"
+        onclick="accuse('Olivia')"
+    >
+        Olivia S.
+    </button>
+
+
+    <div id="result"></div>
+
+
+    <button
+        class="back"
+        onclick="showScreen('menu')"
+    >
+        ← SORUŞTURMA PANELİ
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="js/game.js"></script>
+
+</body>
+</html>
